@@ -1,6 +1,3 @@
-var h = 26,
-    m = 35;
-
 function isTimeValid(a, b){                               //first task
     if(typeof(a)=='number' && typeof(b) =='number' ){
         if (a>=1 && a<=24 && b >= 0 && b<=59){
@@ -33,7 +30,7 @@ function addMinutes(h, m, addM){                           //second task
     }
 }
 
-function getSeason(m){
+function getSeason(m){                              //thrid task
     if(typeof(m)=='number'){
             switch (m) {
                 case 12:
@@ -53,4 +50,20 @@ function getSeason(m){
     } else {
         return false;
     }
+}
+
+function getDayDeclension(d){
+    if(typeof(d)=='number'){
+        switch (d) {
+            case 1: return "День"; break;
+            case 2:
+            case 3:
+            case 4: return "Дня"; break;
+            default: return "Дней";
+
+            default: return false
+        }
+} else {
+    return false;
+}
 }
