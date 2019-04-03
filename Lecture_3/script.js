@@ -78,10 +78,22 @@ function getSumm(n){                //fifth task
     }
 }
 
-function getMultiplicationTable(n){
+function getMultiplicationTable(n){            //sixth task
     if(typeof(n)=="number"){
         for (var i = 1; i <= 10; i++) {
             console.log(n*i);
+        }
+    } else {
+        return false;
+    }
+}
+
+function isPointInCircle(x,y){
+    if(typeof(x)=="number" && typeof(y)=="number"){
+        if((x-3)*(x-3)+(y-5)*(y-5)<=16){
+            return true;
+        } else {
+            return false;
         }
     } else {
         return false;
