@@ -66,13 +66,23 @@ function getDayDeclension(d){      //fourth task
     }
 }
 
-function getSumm(n){
+function getSumm(n){                //fifth task
     var summ = 0;
     if(typeof(n)=="number"){
         for (var i = 1; i <= n; i++) {
             summ += i;
         }
         return summ;
+    } else {
+        return false;
+    }
+}
+
+function getMultiplicationTable(n){
+    if(typeof(n)=="number"){
+        for (var i = 1; i <= 10; i++) {
+            console.log(n*i);
+        }
     } else {
         return false;
     }
