@@ -13,7 +13,7 @@ function isTimeValid(a, b){                               //first task
     }
 }
 
-function addMinutes(h, m, addM){
+function addMinutes(h, m, addM){                           //second task
     if(typeof(h)=='number' && typeof(m) =='number' && typeof(addM) == 'number' ){
         if(isTimeValid(h, m) == true){
             m+=addM;
@@ -28,6 +28,28 @@ function addMinutes(h, m, addM){
         } else{
             return false;
         }
+    } else {
+        return false;
+    }
+}
+
+function getSeason(m){
+    if(typeof(m)=='number'){
+            switch (m) {
+                case 12:
+                case 1:
+                case 2: return 'Winter'; break;
+                case 3:
+                case 4:
+                case 5: return "Spring"; break;
+                case 6:
+                case 7:
+                case 8: return "Summer"; break;
+                case 9:
+                case 10:
+                case 11: return "Autumn"; break;
+                default: return false
+            }
     } else {
         return false;
     }
