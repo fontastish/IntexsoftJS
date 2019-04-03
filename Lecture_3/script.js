@@ -52,7 +52,7 @@ function getSeason(m){                              //thrid task
     }
 }
 
-function getDayDeclension(d){
+function getDayDeclension(d){      //fourth task 
     if(typeof(d)=='number'){
         switch (d) {
             case 1: return "День"; break;
@@ -60,10 +60,20 @@ function getDayDeclension(d){
             case 3:
             case 4: return "Дня"; break;
             default: return "Дней";
-
-            default: return false
         }
-} else {
+    } else {
     return false;
+    }
 }
+
+function getSumm(n){
+    var summ = 0;
+    if(typeof(n)=="number"){
+        for (var i = 1; i <= n; i++) {
+            summ += i;
+        }
+        return summ;
+    } else {
+        return false;
+    }
 }
