@@ -88,9 +88,26 @@ function getMultiplicationTable(n){            //sixth task
     }
 }
 
-function isPointInCircle(x,y){
+function isPointInCircle(x,y){                      //seventh task
     if(typeof(x)=="number" && typeof(y)=="number"){
         if((x-3)*(x-3)+(y-5)*(y-5)<=16){
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+
+function isPointInQuadrilateral(x,y){
+    if(typeof(x)=="number" && typeof(y)=="number"){
+        if(y<=(4/7)*x+4
+           && y>=-1.5*x-12
+           && y>=0.4*x-2
+           && y<=-0.6*x+3
+           ){
             return true;
         } else {
             return false;
