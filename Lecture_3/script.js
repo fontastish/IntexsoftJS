@@ -1,18 +1,14 @@
 function isTimeValid(a, b){                               //first task
     if(typeof(a)=='number' && typeof(b) =='number' ){
-        if (a>=1 && a<=24 && b >= 0 && b<=59){
-            return true;
-        } else{
-            return false;
-        }    
-    }else {
+        return a >= 0 && a <= 23 && b >= 0 && b <= 59;
+    } else {
         return false;
     }
 }
 
 function addMinutes(h, m, addM){                           //second task
     if(typeof(h)=='number' && typeof(m) =='number' && typeof(addM) == 'number' ){
-        if(isTimeValid(h, m) == true){
+        if(isTimeValid(h, m) === true){
             m+=addM;
             if (m>=60){
                 h+=Math.floor(m/60);
@@ -21,8 +17,8 @@ function addMinutes(h, m, addM){                           //second task
             if(h>24){
                 h%=24;
             }
-            return h + ':' + m;
-        } else{
+            return h.toString().padStart(2,0) + ':' + m.toString().padStart(2,0);
+        } else {
             return false;
         }
     } else {
@@ -31,22 +27,24 @@ function addMinutes(h, m, addM){                           //second task
 }
 
 function getSeason(m){                              //thrid task
+    var season;
     if(typeof(m)=='number'){
             switch (m) {
                 case 12:
                 case 1:
-                case 2: return 'Winter'; break;
+                case 2: season = 'Winter'; break;
                 case 3:
                 case 4:
-                case 5: return "Spring"; break;
+                case 5: season = 'Spring'; break;
                 case 6:
                 case 7:
-                case 8: return "Summer"; break;
+                case 8: season = 'Summer'; break;
                 case 9:
                 case 10:
-                case 11: return "Autumn"; break;
+                case 11: season = 'Autumn'; break;
                 default: return false
             }
+            return season;
     } else {
         return false;
     }
@@ -54,15 +52,20 @@ function getSeason(m){                              //thrid task
 
 function getDayDeclension(d){      //fourth task 
     if(typeof(d)=='number'){
+        d = d % 100;
+        if (d >= 11 && d <= 19){
+            return 'Дней';
+        }
+        var d = d % 10;
         switch (d) {
-            case 1: return "День"; break;
+            case 1: return 'День';
             case 2:
             case 3:
-            case 4: return "Дня"; break;
-            default: return "Дней";
+            case 4: return 'Дня';
+            default: return 'Дней';
         }
     } else {
-    return false;
+        return false;
     }
 }
 
@@ -81,7 +84,7 @@ function getSumm(n){                //fifth task
 function getMultiplicationTable(n){            //sixth task
     if(typeof(n)=="number"){
         for (var i = 1; i <= 10; i++) {
-            console.log(n*i);
+            console.log(n + " * " + i + " = " + n*i);
         }
     } else {
         return false;
