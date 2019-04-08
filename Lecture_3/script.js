@@ -14,7 +14,7 @@ function addMinutes(h, m, addM){                           //second task
                 h+=Math.floor(m/60);
                 m%=60;
             }
-            if(h>24){
+            if(h>23){
                 h%=24;
             }
             return h.toString().padStart(2,0) + ':' + m.toString().padStart(2,0);
