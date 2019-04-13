@@ -43,14 +43,27 @@ function addressBook(str) {
                         + tempArr.slice(2,tempArr.length).join());
                 } else {
                     phoneBook = phoneBook.map(function (item) {
-                        return item.split(/[ |,|:]/)[0].localeCompare(tempArr[1]) === 0
+                        return item.split(/: |,/)[0].localeCompare(tempArr[1]) === 0
                             ? item.concat(',' + tempArr.slice(2,tempArr.length))
                             : item ;
                     })
                 }
                 break;
-            case 'SHOW': return phoneBook; break;
-            case 'REMOVE_PHONE': break;
+            case 'SHOW': finalReturn = phoneBook.sort(); break;
+            case 'REMOVE_PHONE':
+                if (phoneBook.some(function (item) {return item.split(/: |,/)
+                    .indexOf(tempArr[1]) !== -1})){
+                    phoneBook = phoneBook.map(function (eachItem) {
+                        eachItem = eachItem.split(/: |,/).filter(function (item) {
+                            return item.localeCompare(tempArr[1]) !== 0;
+                        });
+                        return eachItem[0] + ': ' + eachItem.slice(1, eachItem.length);
+                    });
+                    finalReturn = true;
+                } else {
+                    finalReturn = false;
+                }
+                break;
         }
     }
     return finalReturn;
@@ -58,5 +71,6 @@ function addressBook(str) {
 
 addressBook('ADD Vlad 00000');
 addressBook('ADD Ivan 33-33-33,45-456-5');
-addressBook('ADD Ivan 100000,99999');
-console.log(phoneBook);
+addressBook('ADD Avan 100000,99999');
+addressBook('SHOW');
+addressBook('REMOVE_PHONE 99999');
