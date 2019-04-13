@@ -59,6 +59,8 @@ function addressBook(str) {
                         });
                         return eachItem[0] + ': ' + eachItem.slice(1, eachItem.length);
                     });
+                    phoneBook = phoneBook.filter(function (item) {
+                        return item.split(/: |,|:/)[1].localeCompare('')});
                     finalReturn = true;
                 } else {
                     finalReturn = false;
@@ -73,4 +75,4 @@ addressBook('ADD Vlad 00000');
 addressBook('ADD Ivan 33-33-33,45-456-5');
 addressBook('ADD Avan 100000,99999');
 addressBook('SHOW');
-addressBook('REMOVE_PHONE 99999');
+//addressBook('REMOVE_PHONE 99999');
