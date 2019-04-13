@@ -13,16 +13,20 @@ function getWords(str){
 
 var test2 = ['web','intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programming'];
 
-function normalizeWords(arr){
-    if (typeof(arr) == 'object'){
+function normalizeWords(arr) {
+    if (typeof (arr) == 'object') {
         var result = [];
-        arr = arr.map(function (item,i,arr) {return item.toLowerCase();})
-        for (var i = 0; i < arr.length; i++){
-            if (!result.some(function (item) {return item.localeCompare(arr[i]) === 0})){
-                result.push(arr[i]);
-            }
-        }
-        return result.join();
+        arr.map(function (item, i, arr) {
+            return item.toLowerCase();
+        })
+            .forEach(function (itemArr) {
+                if (!result.some(function (item) {
+                    return item.localeCompare(itemArr) === 0
+                })) {
+                    result.push(itemArr);
+                }
+            })
+            return result.join();
     }
 }
 
