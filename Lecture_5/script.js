@@ -18,11 +18,11 @@ function normalizeWords(arr){
         var result = [];
         arr = arr.map(function (item,i,arr) {return item.toLowerCase();})
         for (var i = 0; i < arr.length; i++){
-            if (result.some(function (item,i,arr) {return item == arr[i]})){
+            if (!result.some(function (item) {return item.localeCompare(arr[i]) === 0})){
                 result.push(arr[i]);
             }
         }
-        return result.join().toLowerCase;
+        return result.join();
     }
 }
 
