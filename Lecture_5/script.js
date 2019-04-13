@@ -37,18 +37,17 @@ function addressBook(str) {
             tempStr = '';
         switch (tempArr[0]) {
             case 'ADD':
-                phoneBook.map(function (item) {
-                    var b = item.split(/[ |,|:]/)[0].localeCompare(tempArr[1]) === 0,
-                        g = item.split(/[ |,|:]/);
-                    console.log(g);
-                    return item.split(/[ |,|:]/)[0].localeCompare(tempArr[1]) === 0
-                        ? item.concat(tempArr.slice(2,tempArr.length))
-                        : console.log(10);
-                })
-                tempStr = tempArr[1] + ': '
-                    + tempArr.slice(2,tempArr.length).join();
-                phoneBook.push(tempStr);
-                finalReturn = tempStr;
+                if (!phoneBook.some(function (item) {return item.split(":")[0]
+                    .localeCompare(tempArr[1]) === 0})){
+                    finalReturn = phoneBook.push(tempArr[1] + ': '
+                        + tempArr.slice(2,tempArr.length).join());
+                } else {
+                    phoneBook = phoneBook.map(function (item) {
+                        return item.split(/[ |,|:]/)[0].localeCompare(tempArr[1]) === 0
+                            ? item.concat(',' + tempArr.slice(2,tempArr.length))
+                            : item ;
+                    })
+                }
                 break;
             case 'SHOW': return phoneBook; break;
             case 'REMOVE_PHONE': break;
@@ -57,29 +56,6 @@ function addressBook(str) {
     return finalReturn;
 }
 
-var sss= 'one'
-
-function s(){
-    var sss = 'one';
-    return sss.concat('two');
-}
-
-
-phoneBook.forEach(function (item) {
-    var g = item.split(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)[0].localeCompare(tempArr[1]) === 0;
-    if (g){
-        item = item + ',' + tempArr.slice(2,tempArr.length).join();
-        console.log(item);
-        return item;
-    } else {
-        console.log(55555)
-    }
-    return item.split(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g)[0].localeCompare(tempArr[1]) === 0 ?
-        item.concat(tempArr.slice(2,tempArr.length).join()) : item;
-})
-
-console.log(sss.concat('two'));
-console.log(s());
 addressBook('ADD Vlad 00000');
 addressBook('ADD Ivan 33-33-33,45-456-5');
 addressBook('ADD Ivan 100000,99999');
