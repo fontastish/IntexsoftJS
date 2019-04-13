@@ -1,13 +1,14 @@
-var test = 'Прохожу курс в компнии #intexsoft по #javascript';
+var test = 'Прохожу курс в компнии #intexsoft по #javascript.';
 
-function getWords(str){
+function getWords(str) {
     var finalarr = [];
-    if (typeof(str) == 'string'){
-        finalarr = str.split(' ')
-            .filter(function (item,i,arr) {return arr[i].indexOf('#') === 0;})
-            .map(function (item,i,arr) {
-                return arr[i].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")});
-    }
+    finalarr = str.split(/[ ,.]/g)
+        .filter(function (item, i, arr) {
+            return arr[i].indexOf('#') === 0;
+        })
+        .map(function (item, i, arr) {
+            return arr[i].replace(/[#]/g, "")
+        });
     return finalarr;
 }
 
@@ -15,44 +16,50 @@ var test2 = ['web','intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programmin
 
 function normalizeWords(arr) {
     var result = [];
-    if (typeof (arr) == 'object') {
-        arr.map(function (item) {return item.toLowerCase();})
-            .forEach(function (itemArr) {
-                if (!result.some(function (item) {
-                    return item.localeCompare(itemArr) === 0
-                })) {
-                    result.push(itemArr);
-                }
-            })
-            return result.join();
-    }
+    arr.map(function (item) {
+        return item.toLowerCase();
+    })
+        .forEach(function (itemArr) {
+            if (!result.some(function (item) {
+                return item.localeCompare(itemArr) === 0
+            })) {
+                result.push(itemArr);
+            }
+        })
+    return result.join(', ');
 }
 
 var phoneBook = [];
 
 function addressBook(str) {
     var finalReturn = 0;
-    if (typeof(str) === 'string'){
-        var tempArr = str.split(/[ |,]/),
-            tempStr = '';
+    if (typeof (str) === 'string') {
+        var tempArr = str.split(/[ |,]/);
         switch (tempArr[0]) {
             case 'ADD':
-                if (!phoneBook.some(function (item) {return item.split(":")[0]
-                    .localeCompare(tempArr[1]) === 0})){
+                if (!phoneBook.some(function (item) {
+                    return item.split(":")[0]
+                        .localeCompare(tempArr[1]) === 0
+                })) {
                     finalReturn = phoneBook.push(tempArr[1] + ': '
-                        + tempArr.slice(2,tempArr.length).join());
+                        + tempArr.slice(2, tempArr.length).join());
                 } else {
                     phoneBook = phoneBook.map(function (item) {
                         return item.split(/: |,/)[0].localeCompare(tempArr[1]) === 0
-                            ? item.concat(',' + tempArr.slice(2,tempArr.length))
-                            : item ;
+                            ? item.concat(',' + tempArr.slice(2, tempArr.length))
+                            : item;
+                        finalReturn = phoneBook.length;
                     })
                 }
                 break;
-            case 'SHOW': finalReturn = phoneBook.sort(); break;
+            case 'SHOW':
+                finalReturn = phoneBook.sort();
+                break;
             case 'REMOVE_PHONE':
-                if (phoneBook.some(function (item) {return item.split(/: |,/)
-                    .indexOf(tempArr[1]) !== -1})){
+                if (phoneBook.some(function (item) {
+                    return item.split(/: |,/)
+                        .indexOf(tempArr[1]) !== -1
+                })) {
                     phoneBook = phoneBook.map(function (eachItem) {
                         eachItem = eachItem.split(/: |,/).filter(function (item) {
                             return item.localeCompare(tempArr[1]) !== 0;
@@ -60,7 +67,8 @@ function addressBook(str) {
                         return eachItem[0] + ': ' + eachItem.slice(1, eachItem.length);
                     });
                     phoneBook = phoneBook.filter(function (item) {
-                        return item.split(/: |,|:/)[1].localeCompare('')});
+                        return item.split(/: |,|:/)[1].localeCompare('')
+                    });
                     finalReturn = true;
                 } else {
                     finalReturn = false;
