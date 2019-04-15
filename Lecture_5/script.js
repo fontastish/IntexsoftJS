@@ -1,12 +1,12 @@
 var test = 'Прохожу курс в компнии #intexsoft по #javascript.';
 
 function getWords(str) {
-    var finalarr = str.split(/ |, |\. |.$/g)
+    var finalarr = str.split(/ |, |\. |\.$/g)
         .filter(function (item) {
             return item.indexOf('#') === 0;
         })
         .map(function (item) {
-            return item.replace(/[#]/g, "")
+            return item.slice(1);
         });
     return finalarr;
 }
@@ -20,7 +20,7 @@ function normalizeWords(arr) {
     })
         .forEach(function (itemArr) {
             if (!result.some(function (item) {
-                return item.localeCompare(itemArr) === 0
+                return item.localeCompare(itemArr) === 0;
             })) {
                 result.push(itemArr);
             }
