@@ -1,7 +1,7 @@
-var test = 'Прохожу курс в компнии #intexsoft по #javascript.';
+var test = 'Прохожу курс в компнии #intexsoft по #javascript';
 
 function getWords(sentence) {
-    var finalarr = sentence.split(/ |, |\. |\.$/g)
+    var finalarr = sentence.split(/ |, |\.$/g)
         .filter(function (item) {
             return item.indexOf('#') === 0;
         })
