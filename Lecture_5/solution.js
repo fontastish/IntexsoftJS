@@ -4,31 +4,18 @@ var phoneBook = [];
 //Здесь можно объявить переменные и функции, которые понядобятся вам для работы ваших функций
 
 module.exports = {
-<<<<<<< HEAD
     getWords: function (sentence) {
         var finalarr = sentence.split(/ |, |\. |\.$/g)
-=======
-    getWords: function(sentence){
-        var finalarr = str.split(/ |, |\. |.$/g)
->>>>>>> 7c4fad7b5371eb5073ee05685868a4c83e85a8ad
             .filter(function (item) {
                 return item.indexOf('#') === 0;
             })
             .map(function (item) {
-<<<<<<< HEAD
                 return item.slice(1);
-=======
-                return item.replace(/[#]/g, "")
->>>>>>> 7c4fad7b5371eb5073ee05685868a4c83e85a8ad
             });
         return finalarr;
     },
 
-<<<<<<< HEAD
     normalizeWords: function (words) {
-=======
-    normalizeWords: function(words){
->>>>>>> 7c4fad7b5371eb5073ee05685868a4c83e85a8ad
         var result = [];
         arr.map(function (item) {
             return item.toLowerCase();
@@ -43,11 +30,7 @@ module.exports = {
         return result.join(', ');
     },
 
-<<<<<<< HEAD
     addressBook: function (command) {
-=======
-    addressBook: function(command){
->>>>>>> 7c4fad7b5371eb5073ee05685868a4c83e85a8ad
         var finalReturn;
         var tempArr = str.split(/[ |,]/);
         switch (tempArr[0]) {
