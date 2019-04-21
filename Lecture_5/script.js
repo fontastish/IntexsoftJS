@@ -1,7 +1,7 @@
 var test = 'Прохожу курс в компнии #intexsoft по #javascript.';
 
-function getWords(str) {
-    var finalarr = str.split(/ |, |\. |\.$/g)
+function getWords(sentence) {
+    var finalarr = sentence.split(/ |, |\. |\.$/g)
         .filter(function (item) {
             return item.indexOf('#') === 0;
         })
@@ -13,9 +13,9 @@ function getWords(str) {
 
 var test2 = ['web','intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programming'];
 
-function normalizeWords(arr) {
+function normalizeWords(words) {
     var result = [];
-    arr.map(function (item) {
+    words.map(function (item) {
         return item.toLowerCase();
     })
         .forEach(function (itemArr) {
@@ -30,9 +30,9 @@ function normalizeWords(arr) {
 
 var phoneBook = [];
 
-function addressBook(str) {
+function addressBook(command) {
     var finalReturn;
-    var tempArr = str.split(/[ |,]/);
+    var tempArr = command.split(/[ |,]/);
     switch (tempArr[0]) {
         case 'ADD':
             if (!phoneBook.some(function (item) {           //Проверка наличие слова
