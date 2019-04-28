@@ -22,33 +22,27 @@
 
 //date(2017-05-16 13:45)    
 
-function timeShift(date){
+function timeShift(date) {
     return {
-        add:function(addend, command){
-            var varDate = new Date(Date.parse(date))
+        varDate : new Date(Date.parse(date)),
+        value: null,
+        add: function (addend, command) {
+                
             switch (command) {
-                case 'years': varDate.setFullYear(varDate.getFullYear()+addend);break;
-                case 'months': varDate.setMonth(varDate.getMonth()+addend);break;
-                case 'days': varDate.setDate(varDate.getDate()+addend);break;
-                case 'hours': varDate.setHours(varDate.getHours()+addend);break;
-                case 'minutes': varDate.setMinutes(varDate.getMinutes()+addend);break;
+                case 'years': this.varDate.setFullYear(this.varDate.getFullYear() + addend); break;
+                case 'months': this.varDate.setMonth(this.varDate.getMonth() + addend); break;
+                case 'days': this.varDate.setDate(this.varDate.getDate() + addend); break;
+                case 'hours': this.varDate.setHours(this.varDate.getHours() + addend); break;
+                case 'minutes': this.varDate.setMinutes(this.varDate.getMinutes() + addend); break;
             }
-            return timeShift.bind(timeShift,varDate.getFullYear() + '-' + (varDate.getMonth()+1).toString().padStart(2,0)     //Для того чтобы собрать новую строку по старому шаблону
-            + '-' + varDate.getDate().toString().padStart(2,0)+ ' ' 
-            + varDate.getHours().toString().padStart(2,0) + ":" + varDate.getMinutes().toString().padStart(2,0));
+            this.value = this.varDate.getFullYear() + '-' + (this.varDate.getMonth() + 1).toString().padStart(2, 0)
+            + '-' + this.varDate.getDate().toString().padStart(2, 0) + ' '
+            + this.varDate.getHours().toString().padStart(2, 0) + ":" + this.varDate.getMinutes().toString().padStart(2, 0);
+            return this;
+            
         },
-        subtract:function(subtrahend, command){
-            var varDate = new Date(Date.parse(date))
-            switch (command) {
-                case 'years': varDate.setFullYear(varDate.getFullYear()-subtrahend);break;
-                case 'months': varDate.setMonth(varDate.getMonth()-subtrahend);break;
-                case 'days': varDate.setDate(varDate.getDate()-subtrahend);break;
-                case 'hours': varDate.setHours(varDate.getHours()-subtrahend);break;
-                case 'minutes': varDate.setMinutes(varDate.getMinutes()-subtrahend);break;
-            }
-            return timeShift.bind(timeShift, varDate.getFullYear() + '-' + (varDate.getMonth()+1).toString().padStart(2,0) 
-            + '-' + varDate.getDate().toString().padStart(2,0)+ ' ' 
-            + varDate.getHours().toString().padStart(2,0) + ":" + varDate.getMinutes().toString().padStart(2,0));
+        subtract: function (subtrahend, command) {
+            return this.add(-subtrahend,command);
         }
     }
 }
