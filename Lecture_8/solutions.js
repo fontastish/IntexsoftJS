@@ -1,13 +1,45 @@
 function query(collection) {
-
+    var commands = [].slice.call(arguments, 1);
+    var filterArr = commands.filter(function (filtCom) {
+        return filtCom.com == 'filterIn';
+    })
+    for (var i = 0; i < filterArr.length; i++) {
+        collection = filterArr[i].funct(collection);
+    }
+    var selectArr = commands.filter(function (filtCom) {
+        return filtCom.com == 'select';
+    })
+    for (var i = 0; i < selectArr.length; i++) {
+        collection = selectArr[i].funct(collection);
+    }
+    return collection;
 }
 
 function select() {
-
+    var args = [].slice.call(arguments);
+    return {
+        com: 'select',
+        funct: function (collection) {
+            return collection.map(function (itemCollection) {
+                var temp = {};
+                args.forEach(function (field) {
+                    return temp[field] = itemCollection[field]
+                });
+                return temp;
+            })
+        }
+    }
 }
 
 function filterIn(property, values) {
-
+    return {
+        com: 'filterIn',
+        funct: function (collection) {
+            return collection.filter(function (item) {
+                return values.indexOf(item[property]) != -1;
+            })
+        }
+    }
 }
 
 module.exports = {
