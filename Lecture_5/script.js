@@ -1,14 +1,14 @@
 var test = 'Прохожу курс в компнии #intexsoft по #javascript';
 
 function getWords(sentence) {
-    var finalarr = sentence.split(/ |, |\.$/g)
+    var finalArr = sentence.split(' ')
         .filter(function (item) {
             return item.indexOf('#') === 0;
         })
         .map(function (item) {
             return item.slice(1);
         });
-    return finalarr;
+    return finalArr;
 }
 
 var test2 = ['web','intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programming'];
@@ -58,14 +58,14 @@ function addressBook(command) {
                 return item.split(/ |, /g)
                     .indexOf(tempArr[1]) !== -1
             })) {
-                phoneBook = phoneBook.map(function (eachItem) {         // Мап для изменения записи
+                phoneBook = phoneBook.map(function (eachItem) {         // Маp для изменения записи
                     eachItem = eachItem.split(/ |, /g).filter(function (item) {   //Фильтр чтобы удалить нужный номер из записи
                         return item.localeCompare(tempArr[1]) !== 0;
                     });
                     return eachItem[0] + ' ' + eachItem.slice(1, eachItem.length).join(', ');
                 });
                 phoneBook = phoneBook.filter(function (item) {      // Перепроверка всех контактов на наличие в них телефонов
-                    return item.split(/: |,|:/).length > 1;
+                    return item.split(/: |,|:/)[1] != "";
                 });
                 finalReturn = true;
             } else {

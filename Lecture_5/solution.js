@@ -5,14 +5,14 @@ var phoneBook = [];
 
 module.exports = {
     getWords: function (sentence) {
-        var finalarr = sentence.split(/ |, |\. |\.$/g)
+        var finalArr = sentence.split(' ')
             .filter(function (item) {
                 return item.indexOf('#') === 0;
             })
             .map(function (item) {
                 return item.slice(1);
             });
-        return finalarr;
+        return finalArr;
     },
 
     normalizeWords: function (words) {
@@ -65,7 +65,7 @@ module.exports = {
                         return eachItem[0] + ' ' + eachItem.slice(1, eachItem.length).join(', ');
                     });
                     phoneBook = phoneBook.filter(function (item) {      // Перепроверка всех контактов на наличие в них телефонов
-                        return item.split(/: |,|:/).length > 1;
+                        return item.split(/: |,|:/)[1] != "";
                     });
                     finalReturn = true;
                 } else {
