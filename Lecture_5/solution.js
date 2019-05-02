@@ -17,7 +17,7 @@ module.exports = {
 
     normalizeWords: function (words) {
         var result = [];
-        arr.map(function (item) {
+        words.map(function (item) {
             return item.toLowerCase();
         })
             .forEach(function (itemArr) {
@@ -32,7 +32,7 @@ module.exports = {
 
     addressBook: function (command) {
         var finalReturn;
-        var tempArr = str.split(/[ |,]/);
+        var tempArr = command.split(/[ |,]/);
         switch (tempArr[0]) {
             case 'ADD':
                 if (!phoneBook.some(function (item) {           //Проверка наличие слова

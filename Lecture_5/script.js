@@ -11,7 +11,7 @@ function getWords(sentence) {
     return finalArr;
 }
 
-var test2 = ['web','intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programming'];
+var test2 = ['web', 'intexsoft', 'JavaScript', 'IntexSoft', 'script', 'programming'];
 
 function normalizeWords(words) {
     var result = [];
@@ -36,7 +36,7 @@ function addressBook(command) {
     switch (tempArr[0]) {
         case 'ADD':
             if (!phoneBook.some(function (item) {           //Проверка наличие слова
-                    return item.split(":")[0]
+                return item.split(":")[0]
                     .localeCompare(tempArr[1]) === 0
             })) {                                                       //Если нету записи, добавляем
                 finalReturn = phoneBook.push(tempArr[1] + ': '
