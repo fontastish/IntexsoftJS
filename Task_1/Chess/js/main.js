@@ -214,7 +214,7 @@ function showMoves() {
             activeMove.style.fontSize = "100px";
             activeMove.style.lineHeight = '50px';
             activeMove.style.textAlign = "center";
-            activeMove.style.color = 'green';
+            //activeMove.style.color = 'green';
             //document.getElementById(idPosibleMove).style.backgroundColor = "green";
         } catch (error) {
             console.log("за полем")
