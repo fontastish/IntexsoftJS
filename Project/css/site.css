@@ -1,0 +1,100 @@
+body, html {
+    font-size: 16px;
+    color: #534f56;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a,
+.navbar-brand h1 {
+    color: #e1a9ff;
+}
+
+a:hover,
+.navbar-brand h1:hover {
+    color: #c65dff;
+}
+
+.jumbotron {
+    background-color: #e1a9ff;
+    box-shadow: 0px 1px 1px 1px #ececec;
+}
+
+#movies {
+    margin: -5px;
+}
+
+.movies-box {
+    margin: 5px;
+    padding: 5px;
+    min-height: 400px;
+    box-shadow: 0px 1px 1px 1px #ececec;
+    border-radius: .3rem;
+    border: 1px solid #333333;
+}
+
+.movies__preview_image {
+    max-width: 100%;
+    max-height: 320px;
+    margin: 0 auto;
+    display: block;
+}
+
+.movies-box h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movies__description {
+    max-height: 315px;
+    overflow: hidden;
+    word-break: break-word;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.movies__date-text {
+    margin-bottom: 5px;
+    color: #828282;
+}
+
+
+.movies-box[data-id]:hover {
+    background-color: #e1a9ff;
+}
+
+input#searchText {
+    border-radius: .3rem;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #c65dff;
+    color: #534f56 ;
+    background-color: #fff ;
+}
+
+input#searchText:focus,
+input#searchText:active {
+    border: 1px solid #c65dff;
+}
+
+.spinner-border {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border: 5px solid;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-top-color: #e1a9ff;
+    border-right-color: #bf87dc;
+    border-bottom-color: #944bbb;
+    animation: spin 500ms infinite linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
